@@ -17,12 +17,12 @@ const list = async () => {
         if (err && err.code === 'ENOENT') {
             throw new Error("FS operation failed");
         }
-    });
-    fs.readdir(filesDir, (err, files) => {
-        if (err) {
-            throw new Error("FS operation failed");
-        }
-        console.log(files);
+        fs.readdir(filesDir, (err, files) => {
+            if (err) {
+                throw new Error("FS operation failed");
+            }
+            console.log(files);
+        });
     });
 };
 
