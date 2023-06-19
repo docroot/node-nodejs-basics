@@ -18,14 +18,14 @@ const read = async () => {
         if (err && err.code === 'ENOENT') {
             throw new Error("FS operation failed");
         }
+        fs.readFile(readFile, 'utf8', (err, data) => {
+            if (err) {
+                throw new Error("FS operation failed");
+            }
+            console.log(data);
+        });
     });
 
-    fs.readFile(readFile, 'utf8', (err, data) => {
-        if (err) {
-            throw new Error("FS operation failed");
-        }
-        console.log(data);
-    });
 };
 
 await read();
