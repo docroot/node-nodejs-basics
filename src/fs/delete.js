@@ -13,20 +13,17 @@ const __dirname = dirname(__filename);
 
 const remove = async () => {
     const filesDir = path.join(__dirname, 'files');
-
     const removedFile = path.join(filesDir, 'fileToRemove.txt');
     fs.access(removedFile, fs.constants.F_OK, (err) => {
         if (err) {
             throw new Error("FS operation failed");
         }
+        fs.unlink(removedFile, (err) => {
+            if (err) {
+                throw err;
+            }
+        });
     });
-
-    fs.unlink(removedFile, (err) => {
-        if (err) {
-            throw err;
-        }
-    });
-
 };
 
 await remove();
